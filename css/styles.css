@@ -1,0 +1,237 @@
+/* ==========================================================================
+   Bingham University Christian Fellowship — shared styles
+   Sections: 1 Tokens · 2 Base · 3 Buttons · 4 Header · 5 Hero · 6 Home
+             7 Inner pages · 8 Contact · 9 Footer · 10 Utilities · 11 Responsive
+   ========================================================================== */
+
+/* 1. Tokens ---------------------------------------------------------------- */
+:root {
+  --navy: #071827;
+  --navy-2: #0d2438;
+  --blue: #2f78e8;
+  --blue-2: #4b8ff1;
+  --ink: #142235;
+  --muted: #66758a;
+  --light: #f5f8fc;
+  --white: #fff;
+  --line: #e4eaf1;
+  --radius: 18px;
+  --shadow: 0 16px 45px rgba(9, 31, 53, .10);
+  --font-sans: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+
+/* 2. Base ------------------------------------------------------------------ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); color: var(--ink); background: var(--white); line-height: 1.65; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+button, input, textarea { font: inherit; }
+h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.15; }
+h1 { font-size: clamp(2.7rem, 6vw, 5.1rem); }
+h2 { font-size: clamp(2rem, 4vw, 3.25rem); }
+h3 { font-size: 1.45rem; }
+p { color: var(--muted); }
+:focus-visible { outline: 2px solid var(--blue-2); outline-offset: 3px; }
+
+.container { width: min(1160px, 92%); margin: auto; }
+.section { padding: 86px 0; }
+.section-light { background: var(--light); }
+.eyebrow { text-transform: uppercase; letter-spacing: .28em; font-size: .72rem; font-weight: 700; color: var(--blue); }
+.link { color: #205aa5; font-weight: 700; font-size: .82rem; }
+
+.icon {
+  width: 48px; height: 48px; margin: 0 auto 15px;
+  display: grid; place-items: center;
+  border-radius: 15px; background: #edf4fd; color: #194e91; font-size: 1.25rem;
+}
+
+/* 3. Buttons --------------------------------------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  padding: 13px 22px; border: 1px solid transparent; border-radius: 999px;
+  font-weight: 700; transition: .25s;
+}
+.btn-primary { background: var(--blue); color: white; }
+.btn-primary:hover { background: #2366c8; transform: translateY(-2px); }
+.btn-outline { border-color: rgba(255, 255, 255, .7); color: white; }
+.btn-dark { background: var(--navy); color: white; }
+.btn-light { background: white; color: var(--navy); border-color: var(--line); }
+
+/* 4. Header & navigation --------------------------------------------------- */
+.site-header {
+  position: absolute; z-index: 20; top: 0; left: 0; right: 0;
+  color: white; background: rgba(4, 17, 29, .92); backdrop-filter: blur(12px);
+}
+.nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 25px; }
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-mark { font-size: 2rem; line-height: 1; }
+.brand-title { font-family: var(--font-serif); font-size: 1.15rem; }
+.brand-sub { font-size: .58rem; letter-spacing: .2em; opacity: .7; }
+.brand-logo { height: 52px; width: auto; }
+
+.nav-links { display: flex; align-items: center; gap: 25px; font-size: .88rem; }
+.nav-links a { opacity: .9; position: relative; }
+.nav-links a:hover, .nav-links a[aria-current="page"] { opacity: 1; color: #76aaff; }
+.nav-links a[aria-current="page"]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -9px; height: 2px; background: var(--blue);
+}
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.menu-toggle { display: none; background: none; border: 0; color: white; font-size: 1.7rem; cursor: pointer; }
+
+/* 5. Hero (home) ----------------------------------------------------------- */
+.hero {
+  min-height: 760px; display: flex; align-items: center; position: relative; overflow: hidden; color: white;
+  background:
+    linear-gradient(90deg, rgba(3, 16, 28, .98) 0%, rgba(5, 23, 39, .88) 42%, rgba(6, 28, 45, .38) 75%),
+    radial-gradient(circle at 78% 38%, rgba(92, 154, 235, .5), transparent 28%),
+    linear-gradient(135deg, #0a2438 0%, #193c58 55%, #6c8da5 100%);
+}
+.hero::after {
+  content: ""; position: absolute; inset: auto 0 0; height: 45%; pointer-events: none;
+  background: linear-gradient(transparent, rgba(0, 0, 0, .45));
+}
+.hero-inner { position: relative; z-index: 2; padding-top: 70px; max-width: 720px; }
+.hero .eyebrow { color: #79adff; }
+.hero h1 { margin: 18px 0 20px; }
+.hero h1 span { color: #5e9bf2; }
+.hero p { color: #dce7f2; max-width: 590px; font-size: 1.02rem; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+
+/* 6. Home sections --------------------------------------------------------- */
+.feature-strip { background: white; position: relative; z-index: 4; margin-top: -1px; border-bottom: 1px solid var(--line); }
+.feature-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
+.feature { padding: 34px 18px; text-align: center; border-right: 1px solid var(--line); }
+.feature:last-child { border-right: 0; }
+.feature h3 { font-family: var(--font-sans); font-size: .98rem; }
+.feature p { font-size: .82rem; margin: 7px 0 8px; }
+
+.split { display: grid; grid-template-columns: 1.1fr .9fr; }
+.split-text { padding: 25px; }
+.split-text p { margin-top: 18px; }
+.about-card {
+  min-height: 410px; padding: 65px; position: relative; overflow: hidden; color: white;
+  background: linear-gradient(135deg, rgba(5, 19, 32, .94), rgba(11, 43, 68, .88));
+}
+.about-card::before {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(circle at 85% 15%, rgba(75, 143, 241, .35), transparent 35%);
+}
+.about-card > * { position: relative; z-index: 1; }
+.about-card p { color: #d3dfeb; max-width: 520px; margin: 18px 0 24px; }
+
+.events-card { padding: 55px; background: #f3f7fb; }
+.events-head { display: flex; justify-content: space-between; align-items: center; }
+.events-head h2 { font-size: 2rem; }
+
+.event-row { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: center; }
+.event-date {
+  width: 58px; height: 65px; flex: none; display: grid; place-items: center; text-align: center;
+  border-radius: 12px; background: white; box-shadow: 0 6px 20px rgba(0, 0, 0, .05);
+}
+.event-date small { font-size: .62rem; color: var(--blue); font-weight: 800; }
+.event-date strong { font-size: 1.2rem; }
+.event-info { flex: 1; }
+.event-info h3 { font-family: var(--font-sans); font-size: 1rem; }
+.event-info p { font-size: .78rem; }
+.arrow { font-size: 1.2rem; color: var(--blue); }
+
+.quote-section { background: linear-gradient(135deg, #071827, #163450); color: white; text-align: center; padding: 72px 20px; }
+.quote-section p { color: #fff; font: 500 clamp(1.45rem, 3vw, 2.3rem) var(--font-serif); max-width: 780px; margin: 16px auto; }
+.quote-section small { letter-spacing: .2em; color: #8bb8f3; font-weight: 700; }
+
+/* 7. Inner pages ----------------------------------------------------------- */
+.page-hero { padding: 170px 0 90px; background: linear-gradient(135deg, #071827, #153a5b); color: white; }
+.page-hero p { color: #cddbea; max-width: 680px; margin-top: 15px; }
+
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.card { border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; background: white; box-shadow: 0 8px 30px rgba(15, 35, 55, .04); }
+.card:hover { box-shadow: var(--shadow); transform: translateY(-3px); transition: .25s; }
+.card .icon { margin: 0 0 18px; }
+.card p { margin-top: 9px; font-size: .92rem; }
+.card .link { display: inline-block; margin-top: 16px; }
+.card .btn { margin-top: 22px; }
+.center-card { min-height: 230px; background: linear-gradient(145deg, #fff, #f4f8fd); }
+
+.sermon-list, .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.sermon-card { padding: 25px; border-radius: var(--radius); background: var(--light); }
+.sermon-card .meta { font-size: .75rem; color: var(--blue); font-weight: 700; text-transform: uppercase; letter-spacing: .1em; }
+.sermon-card h3 { margin: 10px 0; }
+
+.gallery-item { aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; position: relative; background: linear-gradient(135deg, #173955, #6c8ca5); }
+.gallery-item:nth-child(2n) { background: linear-gradient(135deg, #0c2438, #3f6f99); }
+.gallery-item::after {
+  content: attr(data-title); position: absolute; inset: auto 0 0; padding: 45px 20px 18px;
+  color: white; font-weight: 700; background: linear-gradient(transparent, rgba(0, 0, 0, .7));
+}
+
+/* 8. Contact --------------------------------------------------------------- */
+.contact-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 50px; }
+.contact-info h2 + p { margin-top: 15px; }
+.contact-info .item { padding: 18px 0; border-bottom: 1px solid var(--line); }
+.contact-info strong { display: block; margin-bottom: 3px; }
+
+.form { padding: 35px; border: 1px solid var(--line); border-radius: 20px; box-shadow: var(--shadow); }
+.form h3 + p { margin: 7px 0 22px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.field { display: flex; flex-direction: column; gap: 7px; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: .83rem; font-weight: 700; }
+.field input, .field textarea { border: 1px solid #d8e0ea; border-radius: 10px; padding: 13px 14px; outline: none; }
+.field input:focus, .field textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(47, 120, 232, .1); }
+.field textarea { min-height: 150px; resize: vertical; }
+
+.notice {
+  display: none; position: fixed; right: 20px; bottom: 20px; z-index: 100;
+  background: var(--navy-2); color: white; padding: 15px 20px; border-radius: 12px; box-shadow: var(--shadow);
+}
+
+/* 9. Footer ---------------------------------------------------------------- */
+.footer { background: #061521; color: white; padding: 55px 0 22px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 35px; }
+.footer p, .footer a { color: #9eb1c5; font-size: .86rem; }
+.footer h4 { font-family: var(--font-sans); margin-bottom: 14px; }
+.footer-about { margin-top: 15px; max-width: 330px; }
+.footer-links { display: grid; gap: 7px; }
+.footer-bottom {
+  margin-top: 40px; padding-top: 20px; display: flex; justify-content: space-between; gap: 20px;
+  border-top: 1px solid rgba(255, 255, 255, .1); font-size: .75rem; color: #7f94aa;
+}
+
+/* 10. Reveal-on-scroll (only hides content when JavaScript is running) ----- */
+.js .reveal { opacity: 0; transform: translateY(15px); transition: .6s; }
+.js .reveal.show { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn, .card:hover { transition: none; transform: none; }
+}
+
+/* 11. Responsive ----------------------------------------------------------- */
+@media (max-width: 900px) {
+  .nav-links {
+    display: none; position: absolute; top: 76px; left: 0; right: 0;
+    flex-direction: column; align-items: flex-start; padding: 20px; background: var(--navy);
+  }
+  .nav-links.open { display: flex; }
+  .menu-toggle { display: block; }
+  .nav-actions .btn { display: none; }
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .feature:nth-child(2) { border-right: 0; }
+  .feature:nth-child(3), .feature:nth-child(4), .feature:nth-child(5) { border-top: 1px solid var(--line); }
+  .split, .contact-grid { grid-template-columns: 1fr; }
+  .cards, .sermon-list, .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  .section { padding: 60px 0; }
+  .hero { min-height: 700px; }
+  .feature-grid, .cards, .sermon-list, .gallery-grid, .form-grid, .footer-grid { grid-template-columns: 1fr; }
+  .feature { border-right: 0; }
+  .feature:nth-child(n+2) { border-top: 1px solid var(--line); }
+  .footer-bottom { flex-direction: column; }
+  .about-card, .events-card { padding: 40px 25px; }
+}
